@@ -1,0 +1,41 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!/src/main/
+!/src/test/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+'.idea'
+'*.mvn'
+spring-boot-oauth2-demo-server/.mvn
+spring-boot-oauth2-demo-server/mvnw
+spring-boot-oauth2-demo-server/mvnw.cmd
+spring-boot-oauth2-demo-server/target
+spring-boot-oauth2-demo-server/web
+spring-boot-oauth2-demo-server/spring-boot-oauth2-demo-server.iml
+spring-boot-oauth2-demo-client/spring-boot-oauth2-demo-client.iml
+node_modules/**.idea
