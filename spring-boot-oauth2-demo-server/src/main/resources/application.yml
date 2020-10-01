@@ -1,0 +1,92 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/oauth2
+    username: postgres
+    password: root123
+#    driver-class-name:org.postgresql.Driver
+    initialization-mode: always
+    dbcp2:
+      driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 429458373186-4do7ia24u76g17b1fffm53ojo4bl4eks.apps.googleusercontent.com
+            clientSecret: pmwD9VfzzdGcE_SsovWvx8jW
+            redirectUri: "http://localhost:8080/oauth2/callback/google"
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 2711977722409786
+            clientSecret: 8bb12cd88617857f6bb102e1292152cb
+#            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}" # Note that facebook now mandates the use of https redirect URIs, so make sure your app supports https in production
+            redirectUri: "http://localhost:8080/oauth2/callback/facebook" # Note that facebook now mandates the use of https redirect URIs, so make sure your app supports https in production
+            scope:
+              - email
+              - public_profile
+#          github:
+#            clientId: d3e47fc2ddd966fa4352
+#            clientSecret: 3bc0f6b8332f93076354c2a5bada2f5a05aea60d
+#            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+#            scope:
+#              - user:email
+#              - read:user
+        provider:
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the frontend client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
+
+
+
+#server.port=80
+#spring.datasource.url=jdbc:postgresql://localhost:5432/learn
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.datasource.username=postgres
+#spring.datasource.password=root123
+#spring.jpa.hibernate.ddl-auto=create
+#spring.datasource.initialization-mode=always
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+#spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+#spring.data.rest.base-path=/api
+#spring.jackson.serialization.fail-on-empty-beans=false
+#spring.data.rest.detection-strategy=annotated
+#spring.servlet.multipart.max-file-size=100MB
+#spring.servlet.multipart.max-request-size=100MB
+#app.jwtSecret=MyApiSupperMupperKey
+#app.jwtExpirationInMs=1728000000
+#
+#spring.security.oauth2.client.registration.google.client-id=429458373186-4do7ia24u76g17b1fffm53ojo4bl4eks.apps.googleusercontent.com
+#spring.security.oauth2.client.registration.google.client-secret=pmwD9VfzzdGcE_SsovWvx8jW
+#spring.security.oauth2.client.registration.google.redirect-uri="{baseUrl}/oauth2/callback/{registrationId}"
+#spring.security.oauth2.client.registration.google.scope=-email -profile
+#
+#spring.security.oauth2.client.registration.facebook.client-id=2711977722409786
+#spring.security.oauth2.client.registration.facebook.client-secret=8bb12cd88617857f6bb102e1292152cb
+#spring.security.oauth2.client.registration.facebook.redirect-uri="{baseUrl}/oauth2/callback/{registrationId}"
+#spring.security.oauth2.client.registration.facebook.scope=-email -profile
